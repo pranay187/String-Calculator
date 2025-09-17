@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/string_calculator"
+
+calc = StringCalculator.new
+
+if ARGV.empty?
+  puts "Usage: bin/string_calculator \"numbers_string\""
+  puts "Example: bin/string_calculator \"1,2,3\""
+  exit 1
+end
+
+numbers = ARGV[0]
+begin
+  result = calc.add(numbers)
+  puts "Result: #{result}"
+rescue ArgumentError => e
+  warn "Error: #{e.message}"
+  exit 1
+end
